@@ -30,6 +30,8 @@ PLAYER_RECT = PLAYER_SURFACE.get_rect(midbottom=(80, 250))
 PLAYER_GRAVITY = 0
 GAME_RUNNING = True
 
+"func"
+
 
 def draw_window():
     SCREEN.blit(SKY_SURFACE, (0, 0))
