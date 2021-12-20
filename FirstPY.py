@@ -28,21 +28,24 @@ PLAYER_SURFACE = pygame.image.load(os.path.join(
     "BuildingBlocks/Players", "Player_stand.png")).convert_alpha()
 PLAYER_RECT = PLAYER_SURFACE.get_rect(midbottom=(80, 250))
 PLAYER_GRAVITY = 0
+START_TIME = 0
 GAME_RUNNING = True
 
-"func"
+
+def display_time():
+    current_time = pygame.time.get_ticks() - START_TIME
+    time_surface = FONT_.render(f"{current_time}", False, (64, 64, 64))
+    time_rect = time_surface.get_rect(center=(400, 50))
+    SCREEN.blit(time_surface, time_rect)
 
 
 def draw_window():
     SCREEN.blit(SKY_SURFACE, (0, 0))
     SCREEN.blit(GROUND_SURFACE, (0, 250))
 
-    pygame.draw.rect(SCREEN, "purple", TEXT_RECT)
-    pygame.draw.rect(SCREEN, "purple", TEXT_RECT, 10)
     pygame.draw.line(SCREEN, "Black", start_pos=(0, 0), end_pos=(800, 400))
     pygame.draw.ellipse(SCREEN, "black", pygame.Rect(50, 150, 100, 100))
 
-    SCREEN.blit(TEXT_SURFACE, TEXT_RECT)
     SCREEN.blit(SNAIL_SURFACE, SNAIL_RECT)
     SCREEN.blit(PLAYER_SURFACE, PLAYER_RECT)
 
@@ -97,7 +100,7 @@ while True:
             if event.type == pygame.KEYDOWN and event.key == K_SPACE:
                 GAME_RUNNING = True
                 SNAIL_RECT.left = 800
-
+                START_TIME = pygame.time.get_ticks()
     if GAME_RUNNING:
         PLAYER_GRAVITY += 1
         PLAYER_RECT.y += PLAYER_GRAVITY
@@ -106,6 +109,7 @@ while True:
         border_limit()
         # collision_detections_MouseKey_Detections()
         draw_window()
+        display_time()
         game_state_end()
 
         pygame.display.update()
