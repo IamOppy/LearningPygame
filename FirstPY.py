@@ -114,15 +114,6 @@ def sprite_collision():
         return True
 
 
-WIDTH = 800
-HEIGHT = 400
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-NAME_OF_DISPLAY = pygame.display.set_caption('PYGAME INTIAL')
-CLOCK = pygame.time.Clock()  # CONTROL/SET FRAMERATE
-FONT_ = pygame.font.Font(os.path.join(
-    'BuildingBlocks/FONT', 'Pixeltype.ttf'), 50)  # FONT TYPE AND SIZE
-
-
 SKY_SURFACE = pygame.image.load(os.path.join("BuildingBlocks", "Sky.png"))
 GROUND_SURFACE = pygame.image.load(
     os.path.join("BuildingBlocks", "ground.png"))
